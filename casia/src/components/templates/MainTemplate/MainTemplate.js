@@ -1,10 +1,19 @@
 import React from 'react';
-import ButtonIcon from '../../atoms/ButtonIcon/ButtonIcon';
-import NoteIcon from '../../../assets/svgs/note.svg';
+import styled from 'styled-components';
+import CreatingMenu from '../../molecules/CreatingMenu/CreatingMenu';
+import Sidebar from '../../organisms/Sidebar/Sidebar';
+
+const InnerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+`;
 
 const MainTemplate = () => (
-  <>
-    <ButtonIcon icon={NoteIcon}></ButtonIcon>
-  </>
+  <InnerWrapper>
+    <Sidebar></Sidebar>
+    <CreatingMenu></CreatingMenu>
+  </InnerWrapper>
 );
 export default MainTemplate;

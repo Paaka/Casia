@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const ButtonIcon = styled.div`
   height: 60px;
@@ -13,6 +13,16 @@ const ButtonIcon = styled.div`
     background-color: #eee;
     border-radius: 50%;
   }
+
+  ${({ logo }) =>
+    logo &&
+    css`
+      padding: 0;
+      background-size: 55px;
+      &:hover {
+        background-color: transparent;
+      }
+    `}
 `;
 
 export default ButtonIcon;
