@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import CreatingMenu from '../../molecules/CreatingMenu/CreatingMenu';
 import Sidebar from '../../organisms/Sidebar/Sidebar';
 
 const InnerWrapper = styled.div`
@@ -10,10 +9,10 @@ const InnerWrapper = styled.div`
   align-items: center;
 `;
 
-const MainTemplate = () => (
+const MainTemplate = props => (
   <InnerWrapper>
     <Sidebar></Sidebar>
-    <CreatingMenu></CreatingMenu>
+    {props.children}
   </InnerWrapper>
 );
 export default MainTemplate;

@@ -1,9 +1,12 @@
 import React from 'react';
 import MainTemplate from '../../components/templates/MainTemplate/MainTemplate';
+import CreatingMenu from '../../components/molecules/CreatingMenu/CreatingMenu';
 
 const RootView = () => (
   <>
-    <MainTemplate></MainTemplate>
+    <MainTemplate>
+      <CreatingMenu></CreatingMenu>
+    </MainTemplate>
   </>
 );
 
