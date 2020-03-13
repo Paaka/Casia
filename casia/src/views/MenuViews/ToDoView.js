@@ -7,7 +7,6 @@ class ImageView extends React.Component {
     return (
       <MainTemplate>
         <h1> Hello There Todo</h1>
-        <h2>{this.state.maybe}</h2>
       </MainTemplate>
     );
   }

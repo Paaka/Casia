@@ -4,8 +4,11 @@
 
 **Added**
 
-- Redux, React-Redux,
-- CreateItemView
+- Redux, React-Redux (reducer, actions, store)
+- CreateItemView,
+- Form to add notes,
+- Input/Textarea, Form, components,
+- Constants with colors
 
 Initial relase.
 
