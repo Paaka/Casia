@@ -7,8 +7,9 @@ export const changeSelectedItem = string => {
   };
 };
 
-export const addNote = e => {
+export const addNote = (e, isPinned) => {
   e.preventDefault();
+  console.log(isPinned);
   const title = document.getElementById('noteTitle').value;
   const context = document.getElementById('noteContext').value;
   document.getElementById('noteTitle').value = '';
@@ -17,7 +18,8 @@ export const addNote = e => {
     type: 'ADD_NOTE',
     payload: {
       title: title,
-      context: context
+      context: context,
+      isPinned: isPinned
     }
   };
 };

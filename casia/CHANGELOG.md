@@ -5,7 +5,9 @@
 **Added**
 
 - Deleting notes and modyfing them.
-- Routes.js with all paths
+- Routes.js with all paths.
+- Notes Counter,
+- Pin.svg, Security-pin.svg
 
 ## V.0.1.1 Friday, 13 March 2020
 
