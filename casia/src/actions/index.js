@@ -21,3 +21,26 @@ export const addNote = e => {
     }
   };
 };
+
+export const deleteNote = id => {
+  return {
+    type: 'DELETE_NOTE',
+    payload: {
+      itemId: id
+    }
+  };
+};
+
+export const noteContentHandler = (value, id, str) => {
+  if (str === 'TITLE') {
+    return {
+      type: 'UPDATE_TITLE_OF_NOTE',
+      payload: { itemId: id, newValue: value }
+    };
+  } else {
+    return {
+      type: 'UPDATE_CONTENT_OF_NOTE',
+      payload: { itemId: id, newValue: value }
+    };
+  }
+};

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeSelectedItem } from '../../../actions/index';
+import Routes from '../../../routes/routes';
 
 import ButtonIcon from '../../atoms/ButtonIcon/ButtonIcon';
 import HeadingBig from '../../atoms/BigHeading/BigHeading';
@@ -26,18 +27,18 @@ const CreatingMenu = props => (
     <HeadingBig>Create : </HeadingBig>
 
     <Link
-      to="/CreateItem"
+      to={Routes.newItemPage}
       onClick={() => props.dispatch(changeSelectedItem('Note'))}
     >
       <ButtonIcon icon={NoteIcon} />
     </Link>
-    <Link to="/CreateItem">
+    <Link to={Routes.newItemPage}>
       <ButtonIcon
         icon={ListIcon}
         onClick={() => props.dispatch(changeSelectedItem('ToDoList'))}
       />
     </Link>
-    <Link to="/CreateItem">
+    <Link to={Routes.newItemPage}>
       <ButtonIcon
         icon={BrushIcon}
         onClick={() => props.dispatch(changeSelectedItem('Image'))}

@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Routes from '../../../routes/routes';
 
 import ButtonIcon from '../../atoms/ButtonIcon/ButtonIcon';
+import SidebarItem from '../../molecules/SidebarItem/SidebarItem';
 import Logo from '../../molecules/Logo/Logo';
 
 import NotesLinkIcon from '../../../assets/svgs/paper.svg';
@@ -26,25 +29,30 @@ const LinkWrapper = styled.div`
   justify-self: center;
 `;
 
-const Sidebar = () => (
+const Sidebar = props => (
   <Wrapper>
     <ButtonIcon icon={MenuIcon}></ButtonIcon>
 
-    <NavLink to="/" style={{ textDecoration: 'none' }}>
+    <NavLink to={Routes.homePage} style={{ textDecoration: 'none' }}>
       <Logo></Logo>
     </NavLink>
     <LinkWrapper>
-      <NavLink to="/Notes">
-        <ButtonIcon icon={NotesLinkIcon}></ButtonIcon>
+      <NavLink to={Routes.notesPage}>
+        <SidebarItem
+          numOfItems={props.notes.length}
+          icon={NotesLinkIcon}
+        ></SidebarItem>
       </NavLink>
-      <NavLink to="/Todo">
+      <NavLink to={Routes.toDoPage}>
         <ButtonIcon icon={ToDoLinkIcon}></ButtonIcon>
       </NavLink>
-      <NavLink to="/Images">
+      <NavLink to={Routes.imagePage}>
         <ButtonIcon icon={ImagesLinkIcon}></ButtonIcon>
       </NavLink>
     </LinkWrapper>
   </Wrapper>
 );
 
-export default Sidebar;
+const mapStateToProps = ({ notes }) => ({ notes });
+
+export default connect(mapStateToProps, null)(Sidebar);

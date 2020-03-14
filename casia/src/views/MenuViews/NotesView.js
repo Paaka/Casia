@@ -1,7 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import Routes from '../../routes/routes';
 
+import ButtonIcon from '../../components/atoms/ButtonIcon/ButtonIcon';
+import addSVG from '../../assets/svgs/plus.svg';
 import MainTemplate from '../../components/templates/MainTemplate/MainTemplate';
 import Note from '../../components/molecules/Note/note';
 
@@ -22,11 +26,21 @@ const NotesView = props => {
         </h1>
       ) : (
         <StyledGridWrapper>
-          {props.notes.map((val, i) => (
-            <Note title={val.title} context={val.context} />
-          ))}
+          {props.notes.map((val, i) => {
+            return (
+              <Note
+                key={val.id}
+                id={val.id}
+                title={val.title}
+                context={val.context}
+              />
+            );
+          })}
         </StyledGridWrapper>
       )}
+      <Link to={Routes.newItemPage}>
+        <ButtonIcon icon={addSVG}></ButtonIcon>
+      </Link>
     </MainTemplate>
   );
 };
