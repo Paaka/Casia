@@ -2,7 +2,9 @@ const initalState = {
   counter: 1,
   creationItem: 'Note',
   list: [{ id: 0, name: 'Matt' }],
-  notes: [{ id: '0', title: 'first note', context: 'Hello world' }]
+  notes: [
+    { id: '0', isPinned: false, title: 'first note', context: 'Hello world' }
+  ]
 };
 
 const rootReducer = (state = initalState, action) => {

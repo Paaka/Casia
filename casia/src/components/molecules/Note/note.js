@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { deleteNote, noteContentHandler } from '../../../actions/index';
 
+import unpinnedIcon from '../../../assets/svgs/pin.svg';
+import pinnedIcon from '../../../assets/svgs/security-pin.svg';
+import BtnIcon from '../../atoms/ButtonIcon/ButtonIcon';
 import Button from '../../atoms/Button/Button';
 
 const Wrapper = styled.div`
@@ -39,6 +42,12 @@ const ButtonWrapper = styled.div`
 const Note = props => {
   return (
     <Wrapper>
+      <BtnIcon
+        onClick={() => {
+          console.log('work');
+        }}
+        icon={props.all.isPinned ? pinnedIcon : unpinnedIcon}
+      />
       <Header
         value={props.title}
         onChange={e =>

@@ -17,6 +17,16 @@ const StyledGridWrapper = styled.div`
   min-height: 60vh;
 `;
 
+const noteCb = val => (
+  <Note
+    all={val}
+    key={val.id}
+    id={val.id}
+    title={val.title}
+    context={val.context}
+  />
+);
+
 const NotesView = props => {
   return (
     <MainTemplate>
@@ -26,16 +36,16 @@ const NotesView = props => {
         </h1>
       ) : (
         <StyledGridWrapper>
-          {props.notes.map((val, i) => {
-            return (
-              <Note
-                key={val.id}
-                id={val.id}
-                title={val.title}
-                context={val.context}
-              />
-            );
-          })}
+          {props.notes
+            .filter(note => note.isPinned === true)
+            .map((val, i) => {
+              return noteCb(val);
+            })}
+          {props.notes
+            .filter(note => note.isPinned === false)
+            .map((val, i) => {
+              return noteCb(val);
+            })}
         </StyledGridWrapper>
       )}
       <Link to={Routes.newItemPage}>
