@@ -1,5 +1,11 @@
 # Change log
 
+## V.0.1.3 Monday, 16 March 2020
+
+**Added**
+
+- Change styling of NoteForm.
+
 ## V.0.1.2 Saturday, 14 March 2020
 
 **Added**
