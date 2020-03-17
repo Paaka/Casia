@@ -11,7 +11,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: grid;
-  width: 60vw;
+  width: 50vw;
   grid-template-rows: 20%, 65%, 15%;
   grid-template-columns: 1fr 20%;
   border: 3px solid #333;

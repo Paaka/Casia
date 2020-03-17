@@ -9,12 +9,28 @@ import BtnIcon from '../../atoms/ButtonIcon/ButtonIcon';
 import Button from '../../atoms/Button/Button';
 
 const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 20% 60% 20%;
   border-radius: 20px;
   border: 2px solid #ccc;
   margin: 5px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
+`;
+const StyledButtonIcon = styled(BtnIcon)`
+  height: 30px;
+  width: 30px;
+  background-size: 25px;
+  padding: 5px;
+  cursor: pointer;
+  grid-column: 2;
+  grid-row: 1;
+  z-index: 1000;
+  justify-self: flex-end;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
 `;
 
 const Header = styled.input`
@@ -24,14 +40,19 @@ const Header = styled.input`
   font-size: 28px;
   font-weight: 700;
   text-transform: capitalize;
-  background-color: #ffea00;
-  padding: 20px 30px;
+  padding: 10px 2px;
+  grid-column: 1;
+  grid-row: 1;
 `;
 
 const CardContent = styled.textarea`
+  padding: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
   width: 100%;
-  height: 60%;
+  height: 100%;
   border: none;
+  grid-column: 1 / span 2;
 `;
 
 const ButtonWrapper = styled.div`
@@ -42,7 +63,7 @@ const ButtonWrapper = styled.div`
 const Note = props => {
   return (
     <Wrapper>
-      <BtnIcon
+      <StyledButtonIcon
         onClick={() => {
           console.log('work');
         }}
