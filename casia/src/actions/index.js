@@ -47,3 +47,13 @@ export const noteContentHandler = (value, id, str) => {
     };
   }
 };
+
+export const updateNoteAction = note => {
+  return {
+    type: 'UPDATE_PIN',
+    payload: {
+      ...note,
+      isPinned: !note.isPinned
+    }
+  };
+};

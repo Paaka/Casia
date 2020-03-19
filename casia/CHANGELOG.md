@@ -1,5 +1,12 @@
 # Change log
 
+## V.0.1.4 Thursday, 19 March 2020
+
+**Addedd**
+
+- Possibility to pin/unpin from note level,
+- Changing color of notes from form level.
+
 ## V.0.1.3 Monday, 16 March 2020
 
 **Added**

@@ -35,7 +35,6 @@ const StyledButtonIcon = styled(BtnIcon)`
     background-color: rgba(0, 0, 0, 0.05);
   }
 `;
-
 const Header = styled.input`
   border: none;
   height: 40px;
@@ -50,7 +49,6 @@ const Header = styled.input`
   grid-row: 1;
   margin-left: 170px;
 `;
-
 const CardContent = styled.textarea`
   padding: 2px;
   padding-left: 10px;
@@ -62,7 +60,6 @@ const CardContent = styled.textarea`
   background-color: ${({ bgColor }) =>
     bgColor ? Colors.noteColors[bgColor] : 'white'};
 `;
-
 const ButtonWrapper = styled.div`
   width: 100%;
   text-align: center;
@@ -72,9 +69,7 @@ const Note = props => {
   return (
     <Wrapper bgColor={props.color}>
       <StyledButtonIcon
-        onClick={() => {
-          console.log('toDoPin notes');
-        }}
+        onClick={() => props.updatePinHandler(props.all)}
         icon={props.all.isPinned ? pinnedIcon : unpinnedIcon}
       />
       <Header

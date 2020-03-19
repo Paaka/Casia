@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { updateNoteAction } from '../../actions';
 import styled from 'styled-components';
 import Routes from '../../routes/routes';
 
@@ -17,30 +18,35 @@ const StyledGridWrapper = styled.div`
   min-height: 60vh;
 `;
 
-const noteCb = val => (
-  <Note
-    all={val}
-    key={val.id}
-    id={val.id}
-    title={val.title}
-    context={val.context}
-    color={val.color}
-  />
-);
-
 const NotesView = props => {
+  const updatePinHandler = note => {
+    props.dispatch(updateNoteAction(note));
+  };
+
+  const noteCb = val => (
+    <Note
+      updatePinHandler={updatePinHandler}
+      all={val}
+      key={val.id}
+      id={val.id}
+      title={val.title}
+      context={val.context}
+      color={val.color}
+    />
+  );
+
   return (
     <MainTemplate>
       {props.notes.length === 0 ? (
         <h1>
-          You don't have any notes <span>💔</span>
+          You don't have any notes <span role="img">💔</span>
         </h1>
       ) : (
         <StyledGridWrapper>
           {props.notes
             .filter(note => note.isPinned === true)
             .map((val, i) => {
-              return noteCb(val);
+              return noteCb(val, props);
             })}
           {props.notes
             .filter(note => note.isPinned === false)
@@ -58,4 +64,4 @@ const NotesView = props => {
 
 const mapStateToProps = ({ notes }) => ({ notes });
 
-export default connect(mapStateToProps)(NotesView);
+export default connect(mapStateToProps, null)(NotesView);

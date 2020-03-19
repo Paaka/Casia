@@ -14,7 +14,7 @@ const initalState = {
 };
 
 const rootReducer = (state = initalState, action) => {
-  console.log(action.payload);
+  console.log(action.type);
   switch (action.type) {
     case 'CHANGE_SELECTED_ITEM': {
       return {
@@ -63,6 +63,20 @@ const rootReducer = (state = initalState, action) => {
             };
           } else {
             return item;
+          }
+        })
+      };
+    }
+    case 'UPDATE_PIN': {
+      return {
+        ...state,
+        notes: state.notes.map(val => {
+          if (val.id === action.payload.id) {
+            return {
+              ...action.payload
+            };
+          } else {
+            return val;
           }
         })
       };
