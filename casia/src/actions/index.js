@@ -7,9 +7,9 @@ export const changeSelectedItem = string => {
   };
 };
 
-export const addNote = (e, isPinned) => {
+export const addNote = (e, state) => {
   e.preventDefault();
-  console.log(isPinned);
+  console.log(state);
   const title = document.getElementById('noteTitle').value;
   const context = document.getElementById('noteContext').value;
   document.getElementById('noteTitle').value = '';
@@ -19,7 +19,8 @@ export const addNote = (e, isPinned) => {
     payload: {
       title: title,
       context: context,
-      isPinned: isPinned
+      isPinned: state.isPinned,
+      color: state.color
     }
   };
 };

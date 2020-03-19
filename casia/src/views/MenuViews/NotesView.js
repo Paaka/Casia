@@ -24,6 +24,7 @@ const noteCb = val => (
     id={val.id}
     title={val.title}
     context={val.context}
+    color={val.color}
   />
 );
 

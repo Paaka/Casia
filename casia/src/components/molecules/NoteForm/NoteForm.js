@@ -4,10 +4,8 @@ import { addNote, setPin } from '../../../actions/index';
 import emptyPin from '../../../assets/svgs/pin.svg';
 import fullPin from '../../../assets/svgs/security-pin.svg';
 import ButtonIcon from '../../../components/atoms/ButtonIcon/ButtonIcon';
-import StyledInput from '../../atoms/Input/Input';
-import Btn from '../../atoms/Button/Button';
-
 import styled from 'styled-components';
+import ColorPallete from '../ColorPallete/ColorPallete';
 
 const Wrapper = styled.div`
   display: grid;
@@ -69,13 +67,22 @@ const StyledBtn = styled.button`
   }
 `;
 
+const AdditionalOptionsWrapper = styled.div`
+  display: flex;
+`;
+
 class NoteForm extends React.Component {
   state = {
-    isPinned: false
+    isPinned: false,
+    color: 'white'
   };
 
   pinIconHandler = () => {
     this.setState({ isPinned: !this.state.isPinned });
+  };
+
+  colorHandler = str => {
+    this.setState({ color: str });
   };
 
   render() {
@@ -95,9 +102,10 @@ class NoteForm extends React.Component {
             label="Note Content"
             placeholder="Enter content of note..."
           ></StyledTextarea>
-          <StyledBtn
-            onClick={e => this.props.dispatch(addNote(e, this.state.isPinned))}
-          >
+          <AdditionalOptionsWrapper>
+            <ColorPallete idk={this.colorHandler}></ColorPallete>
+          </AdditionalOptionsWrapper>
+          <StyledBtn onClick={e => this.props.dispatch(addNote(e, this.state))}>
             Add Note
           </StyledBtn>
         </Wrapper>

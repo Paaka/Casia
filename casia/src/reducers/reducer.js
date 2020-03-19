@@ -3,7 +3,13 @@ const initalState = {
   creationItem: 'Note',
   list: [{ id: 0, name: 'Matt' }],
   notes: [
-    { id: '0', isPinned: false, title: 'first note', context: 'Hello world' }
+    {
+      id: '0',
+      isPinned: false,
+      title: 'first note',
+      context: 'Hello world',
+      color: 'lightBlue'
+    }
   ]
 };
 

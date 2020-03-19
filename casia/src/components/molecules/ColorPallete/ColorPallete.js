@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ButtonIcon from '../../atoms/ButtonIcon/ButtonIcon';
 import colorIcon from '../../../assets/svgs/color-scheme.svg';
@@ -39,39 +39,77 @@ const DropdownContentItem = styled.div`
   align-items: center;
   justify-content: center;
   border: ${props => (props.bgColor === 'white' ? '1px solid black' : 'none')};
+  cursor: pointer;
 `;
 
-class ColorPallete extends React.Component {
-  state = {
+const ColorPallete = props => {
+  const [mydata, setData] = useState({
     colors: [
-      { color: 'white', isChecked: true },
-      { color: Colors.noteColors.red, isChecked: false },
-      { color: Colors.noteColors.orange, isChecked: false },
-      { color: Colors.noteColors.yellow, isChecked: false },
-      { color: Colors.noteColors.green, isChecked: false },
-      { color: Colors.noteColors.blue, isChecked: false },
-      { color: Colors.noteColors.lightBlue, isChecked: false },
-      { color: Colors.noteColors.darkBlue, isChecked: false },
-      { color: Colors.noteColors.purple, isChecked: false },
-      { color: Colors.noteColors.pink, isChecked: false },
-      { color: Colors.noteColors.brown, isChecked: false },
-      { color: Colors.noteColors.silver, isChecked: false }
+      { id: 'white', color: 'white', isChecked: true },
+      { id: 'red', color: Colors.noteColors.red, isChecked: false },
+      { id: 'orange', color: Colors.noteColors.orange, isChecked: false },
+      { id: 'yellow', color: Colors.noteColors.yellow, isChecked: false },
+      { id: 'green', color: Colors.noteColors.green, isChecked: false },
+      { id: 'blue', color: Colors.noteColors.blue, isChecked: false },
+      {
+        id: 'lightBlue',
+        color: Colors.noteColors.lightBlue,
+        isChecked: false
+      },
+      {
+        id: 'darkBlue',
+        color: Colors.noteColors.darkBlue,
+        isChecked: false
+      },
+      { id: 'purple', color: Colors.noteColors.purple, isChecked: false },
+      { id: 'pink', color: Colors.noteColors.pink, isChecked: false },
+      { id: 'brown', color: Colors.noteColors.brown, isChecked: false },
+      { id: 'silver', color: Colors.noteColors.silver, isChecked: false }
     ]
+  });
+
+  const colorChangeHandler = e => {
+    setData({
+      colors: mydata.colors.map(obj => {
+        if (e.target.id === obj.id) {
+          return {
+            ...obj,
+            isChecked: true
+          };
+        } else {
+          return {
+            ...obj,
+            isChecked: false
+          };
+        }
+      })
+    });
+    props.idk(e.target.id);
   };
-  render() {
-    return (
-      <Dropdown>
-        <StyledButtonIcon icon={colorIcon} />
-        <DropdownContent>
-          {this.state.colors.map((val, i) => (
-            <DropdownContentItem onClick={() => {}} bgColor={val.color}>
-              {val.isChecked ? '✔' : null}
-            </DropdownContentItem>
-          ))}
-        </DropdownContent>
-      </Dropdown>
-    );
-  }
-}
+
+  return (
+    <Dropdown>
+      <StyledButtonIcon icon={colorIcon} />
+      <DropdownContent>
+        {mydata.colors.map((val, i) => (
+          <DropdownContentItem
+            id={val.id}
+            key={val.id}
+            onClick={e => colorChangeHandler(e)}
+            bgColor={val.color}
+          >
+            {val.isChecked ? '✔' : null}
+          </DropdownContentItem>
+        ))}
+      </DropdownContent>
+    </Dropdown>
+  );
+};
+
+/* {data.colors.map((val, i) => (
+  <DropdownContentItem onClick={() => {}} bgColor={val.color}>
+    {val.isChecked ? '✔' : null}
+  </DropdownContentItem>
+))} */
 
 export default ColorPallete;

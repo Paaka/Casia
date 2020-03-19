@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { deleteNote, noteContentHandler } from '../../../actions/index';
+import Colors from '../../../constants/index';
 
 import unpinnedIcon from '../../../assets/svgs/pin.svg';
 import pinnedIcon from '../../../assets/svgs/security-pin.svg';
@@ -16,6 +17,8 @@ const Wrapper = styled.div`
   border: 2px solid #ccc;
   margin: 5px;
   overflow: hidden;
+  background-color: ${({ bgColor }) =>
+    bgColor ? Colors.noteColors[bgColor] : 'white'};
 `;
 const StyledButtonIcon = styled(BtnIcon)`
   height: 30px;
@@ -37,12 +40,15 @@ const Header = styled.input`
   border: none;
   height: 40px;
   justify-self: center;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   text-transform: capitalize;
+  background-color: ${({ bgColor }) =>
+    bgColor ? Colors.noteColors[bgColor] : 'white'};
   padding: 10px 2px;
   grid-column: 1;
   grid-row: 1;
+  margin-left: 170px;
 `;
 
 const CardContent = styled.textarea`
@@ -53,6 +59,8 @@ const CardContent = styled.textarea`
   height: 100%;
   border: none;
   grid-column: 1 / span 2;
+  background-color: ${({ bgColor }) =>
+    bgColor ? Colors.noteColors[bgColor] : 'white'};
 `;
 
 const ButtonWrapper = styled.div`
@@ -62,20 +70,22 @@ const ButtonWrapper = styled.div`
 
 const Note = props => {
   return (
-    <Wrapper>
+    <Wrapper bgColor={props.color}>
       <StyledButtonIcon
         onClick={() => {
-          console.log('work');
+          console.log('toDoPin notes');
         }}
         icon={props.all.isPinned ? pinnedIcon : unpinnedIcon}
       />
       <Header
+        bgColor={props.color}
         value={props.title}
         onChange={e =>
           props.dispatch(noteContentHandler(e.target.value, props.id, 'TITLE'))
         }
       ></Header>
       <CardContent
+        bgColor={props.color}
         onChange={e =>
           props.dispatch(noteContentHandler(e.target.value, props.id))
         }
