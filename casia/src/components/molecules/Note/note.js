@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   overflow: hidden;
   background-color: ${({ bgColor }) =>
     bgColor ? Colors.noteColors[bgColor] : 'white'};
+  transition: 0.3s all;
 `;
 const StyledButtonIcon = styled(BtnIcon)`
   height: 30px;
@@ -67,7 +68,13 @@ const ButtonWrapper = styled.div`
 
 const Note = props => {
   return (
-    <Wrapper bgColor={props.color}>
+    <Wrapper
+      id={props.id}
+      bgColor={props.color}
+      onClick={() => {
+        document.getElementById(props.id).style.width = '800px';
+      }}
+    >
       <StyledButtonIcon
         onClick={() => props.updatePinHandler(props.all)}
         icon={props.all.isPinned ? pinnedIcon : unpinnedIcon}

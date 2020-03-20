@@ -6,6 +6,7 @@ import fullPin from '../../../assets/svgs/security-pin.svg';
 import ButtonIcon from '../../../components/atoms/ButtonIcon/ButtonIcon';
 import styled from 'styled-components';
 import ColorPallete from '../ColorPallete/ColorPallete';
+import Colors from '../../../constants/index';
 
 const Wrapper = styled.div`
   display: grid;
@@ -18,6 +19,8 @@ const Wrapper = styled.div`
   -webkit-box-shadow: 3px 3px 5px 6px #ccc; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   -moz-box-shadow: 3px 3px 5px 6px #ccc; /* Firefox 3.5 - 3.6 */
   box-shadow: 3px 3px 5px 6px #ccc;
+  background-color: ${({ bgColor }) =>
+    bgColor ? Colors.noteColors[bgColor] : 'white'};
 `;
 
 const StyledButtonIcon = styled(ButtonIcon)`
@@ -40,6 +43,8 @@ const TitleInput = styled.input`
   &:focus {
     outline: none;
   }
+  background-color: ${({ bgColor }) =>
+    bgColor ? Colors.noteColors[bgColor] : 'white'};
 `;
 
 const StyledTextarea = styled.textarea`
@@ -50,6 +55,8 @@ const StyledTextarea = styled.textarea`
   &:focus {
     outline: none;
   }
+  background-color: ${({ bgColor }) =>
+    bgColor ? Colors.noteColors[bgColor] : 'white'};
 `;
 
 const StyledBtn = styled.button`
@@ -63,7 +70,7 @@ const StyledBtn = styled.button`
   border-radius: 15px;
   cursor: pointer;
   &:hover {
-    background-color: #eee;
+    background-color: rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -88,8 +95,12 @@ class NoteForm extends React.Component {
   render() {
     return (
       <form>
-        <Wrapper>
-          <TitleInput id="noteTitle" placeholder="Note Title" />
+        <Wrapper bgColor={this.state.color}>
+          <TitleInput
+            bgColor={this.state.color}
+            id="noteTitle"
+            placeholder="Note Title"
+          />
           <StyledButtonIcon
             onClick={() => {
               this.pinIconHandler();
@@ -101,6 +112,7 @@ class NoteForm extends React.Component {
             id="noteContext"
             label="Note Content"
             placeholder="Enter content of note..."
+            bgColor={this.state.color}
           ></StyledTextarea>
           <AdditionalOptionsWrapper>
             <ColorPallete idk={this.colorHandler}></ColorPallete>

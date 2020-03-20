@@ -8,9 +8,9 @@ const ButtonIcon = styled.div`
   background-size: 45px;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-
+  transition: 0.2s all;
   &:hover {
-    background-color: #eee;
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
   }
 
