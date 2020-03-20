@@ -5,10 +5,12 @@ import { updateNoteAction } from '../../actions';
 import styled from 'styled-components';
 import Routes from '../../routes/routes';
 
+import FadeIn from '../../components/animations/FadeIn';
 import ButtonIcon from '../../components/atoms/ButtonIcon/ButtonIcon';
 import addSVG from '../../assets/svgs/plus.svg';
 import MainTemplate from '../../components/templates/MainTemplate/MainTemplate';
 import Note from '../../components/molecules/Note/note';
+import Fade from '../../components/animations/FadeIn';
 
 const StyledGridWrapper = styled.div`
   display: grid;
@@ -38,9 +40,11 @@ const NotesView = props => {
   return (
     <MainTemplate>
       {props.notes.length === 0 ? (
-        <h1>
-          You don't have any notes <span role="img">💔</span>
-        </h1>
+        <Fade>
+          <h1>
+            You don't have any notes <span role="img">💔</span>
+          </h1>
+        </Fade>
       ) : (
         <StyledGridWrapper>
           {props.notes

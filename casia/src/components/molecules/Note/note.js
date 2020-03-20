@@ -1,13 +1,19 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { deleteNote, noteContentHandler } from '../../../actions/index';
-import Colors from '../../../constants/index';
+import styled from 'styled-components';
 
+import Colors from '../../../constants/index';
 import unpinnedIcon from '../../../assets/svgs/pin.svg';
 import pinnedIcon from '../../../assets/svgs/security-pin.svg';
 import BtnIcon from '../../atoms/ButtonIcon/ButtonIcon';
-import Button from '../../atoms/Button/Button';
+import TrashIcon from '../../../assets/svgs/trash.svg';
+import ColorPallete from '../ColorPallete/ColorPallete';
+import Fade from '../../animations/FadeIn';
+
+const ButtonWrapper = styled.div`
+  width: 100%;
+`;
 
 const Wrapper = styled.div`
   display: grid;
@@ -19,8 +25,11 @@ const Wrapper = styled.div`
   overflow: hidden;
   background-color: ${({ bgColor }) =>
     bgColor ? Colors.noteColors[bgColor] : 'white'};
-  transition: 0.3s all;
+  transition: opacity 0.5s ease-in-out;
+  &:hover ${ButtonWrapper} {
+  }
 `;
+
 const StyledButtonIcon = styled(BtnIcon)`
   height: 30px;
   width: 30px;
@@ -36,6 +45,7 @@ const StyledButtonIcon = styled(BtnIcon)`
     background-color: rgba(0, 0, 0, 0.05);
   }
 `;
+
 const Header = styled.input`
   border: none;
   height: 40px;
@@ -50,6 +60,7 @@ const Header = styled.input`
   grid-row: 1;
   margin-left: 170px;
 `;
+
 const CardContent = styled.textarea`
   padding: 2px;
   padding-left: 10px;
@@ -61,19 +72,20 @@ const CardContent = styled.textarea`
   background-color: ${({ bgColor }) =>
     bgColor ? Colors.noteColors[bgColor] : 'white'};
 `;
-const ButtonWrapper = styled.div`
-  width: 100%;
-  text-align: center;
-`;
 
 const Note = props => {
+  const [hover, setHover] = useState(false);
+
   return (
     <Wrapper
+      onMouseEnter={() => {
+        setHover(true);
+      }}
+      onMouseLeave={() => {
+        setHover(false);
+      }}
       id={props.id}
       bgColor={props.color}
-      onClick={() => {
-        document.getElementById(props.id).style.width = '800px';
-      }}
     >
       <StyledButtonIcon
         onClick={() => props.updatePinHandler(props.all)}
@@ -93,10 +105,23 @@ const Note = props => {
         }
         value={props.context}
       />
+
       <ButtonWrapper>
-        <Button secondary onClick={e => props.dispatch(deleteNote(props.id))}>
-          DELETE
-        </Button>
+        {hover ? (
+          <>
+            <Fade>
+              <StyledButtonIcon
+                icon={TrashIcon}
+                onClick={e => props.dispatch(deleteNote(props.id))}
+              />
+            </Fade>
+            <ColorPallete
+              idk={() => {
+                console.log('hello');
+              }}
+            />
+          </>
+        ) : null}
       </ButtonWrapper>
     </Wrapper>
   );

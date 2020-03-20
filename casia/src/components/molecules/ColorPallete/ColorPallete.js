@@ -106,10 +106,4 @@ const ColorPallete = props => {
   );
 };
 
-/* {data.colors.map((val, i) => (
-  <DropdownContentItem onClick={() => {}} bgColor={val.color}>
-    {val.isChecked ? '✔' : null}
-  </DropdownContentItem>
-))} */
-
 export default ColorPallete;
