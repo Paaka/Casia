@@ -1,9 +1,16 @@
 # Change log
 
+## V.0.1.5 Saturday, 21 March 2020
+
+**Added**
+
+- Viertical Sidebar
+
 ## V.0.1.4 Thursday, 19 March 2020
 
-**Addedd**
+**Added**
 
+- Animations (Fade in)
 - Possibility to pin/unpin from note level,
 - Changing color of notes from form level.
 

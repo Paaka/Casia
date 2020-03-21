@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Sidebar from '../../organisms/Sidebar/Sidebar';
+import HorizontalSidebar from '../../organisms/Sidebar/VerticalSidebar';
 
 const InnerWrapper = styled.div`
   display: flex;
@@ -9,10 +10,18 @@ const InnerWrapper = styled.div`
   align-items: center;
 `;
 
+const GridWrapper = styled.div`
+  display: flex;
+  width: 100vw;
+`;
+
 const MainTemplate = props => (
-  <InnerWrapper>
-    <Sidebar></Sidebar>
-    {props.children}
-  </InnerWrapper>
+  <GridWrapper>
+    <HorizontalSidebar></HorizontalSidebar>
+    <InnerWrapper>
+      <Sidebar></Sidebar>
+      {props.children}
+    </InnerWrapper>
+  </GridWrapper>
 );
 export default MainTemplate;

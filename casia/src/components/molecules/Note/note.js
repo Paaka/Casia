@@ -10,6 +10,7 @@ import BtnIcon from '../../atoms/ButtonIcon/ButtonIcon';
 import TrashIcon from '../../../assets/svgs/trash.svg';
 import ColorPallete from '../ColorPallete/ColorPallete';
 import Fade from '../../animations/FadeIn';
+import BottomItems from './BottomItems';
 
 const ButtonWrapper = styled.div`
   width: 100%;
@@ -107,21 +108,7 @@ const Note = props => {
       />
 
       <ButtonWrapper>
-        {hover ? (
-          <>
-            <Fade>
-              <StyledButtonIcon
-                icon={TrashIcon}
-                onClick={e => props.dispatch(deleteNote(props.id))}
-              />
-            </Fade>
-            <ColorPallete
-              idk={() => {
-                console.log('hello');
-              }}
-            />
-          </>
-        ) : null}
+        {hover ? <BottomItems id={props.id}></BottomItems> : null}
       </ButtonWrapper>
     </Wrapper>
   );
