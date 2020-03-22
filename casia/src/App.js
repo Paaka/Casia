@@ -7,6 +7,7 @@ import RootView from './views/RootView/RootView';
 import NotesView from './views/MenuViews/NotesView';
 import ToDoView from './views/MenuViews/ToDoView';
 import ImagesView from './views/MenuViews/ImageView';
+import ArchivesView from './views/MenuViews/ArchivesView';
 import CreateItemView from './views/CreateItemView';
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/Images">
             <ImagesView></ImagesView>
+          </Route>
+          <Route path="/Archives">
+            <ArchivesView />
           </Route>
           <Route path="/CreateItem">
             <CreateItemView clickedItem="Note"></CreateItemView>

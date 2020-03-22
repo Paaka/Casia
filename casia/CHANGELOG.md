@@ -1,5 +1,14 @@
 # Change log
 
+## V.0.1.6 Sunday, 22 March 2020
+
+**Added**
+
+- Animation to Vertical Sidebar.
+- Links to notes, todo, images, from Vertical design.
+- folders.svg, user.svg.
+- Archives View.
+
 ## V.0.1.5 Saturday, 21 March 2020
 
 **Added**

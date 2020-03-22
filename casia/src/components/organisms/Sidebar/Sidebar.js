@@ -31,7 +31,7 @@ const LinkWrapper = styled.div`
 
 const Sidebar = props => (
   <Wrapper>
-    <ButtonIcon icon={MenuIcon}></ButtonIcon>
+    <ButtonIcon onClick={props.menuHandler} icon={MenuIcon}></ButtonIcon>
 
     <NavLink to={Routes.homePage} style={{ textDecoration: 'none' }}>
       <Logo></Logo>

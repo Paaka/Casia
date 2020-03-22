@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Sidebar from '../../organisms/Sidebar/Sidebar';
-import HorizontalSidebar from '../../organisms/Sidebar/VerticalSidebar';
+import VerticalSidebar from '../../organisms/Sidebar/VerticalSidebar/VerticalSidebar';
 
 const InnerWrapper = styled.div`
   display: flex;
@@ -11,17 +11,31 @@ const InnerWrapper = styled.div`
 `;
 
 const GridWrapper = styled.div`
-  display: flex;
-  width: 100vw;
+  position: relative;
 `;
 
-const MainTemplate = props => (
-  <GridWrapper>
-    <HorizontalSidebar></HorizontalSidebar>
-    <InnerWrapper>
-      <Sidebar></Sidebar>
-      {props.children}
-    </InnerWrapper>
-  </GridWrapper>
-);
+const MainTemplate = props => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const sidebarToggleHandler = props => {
+    if (!isSidebarOpen) {
+      setIsSidebarOpen(true);
+    }
+  };
+  const closeSidebar = props => {
+    if (isSidebarOpen) {
+      setIsSidebarOpen(false);
+    }
+  };
+
+  return (
+    <GridWrapper>
+      <VerticalSidebar isVisible={isSidebarOpen} />
+      <InnerWrapper onClick={closeSidebar}>
+        <Sidebar menuHandler={sidebarToggleHandler}></Sidebar>
+        {props.children}
+      </InnerWrapper>
+    </GridWrapper>
+  );
+};
 export default MainTemplate;
