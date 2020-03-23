@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { addNote, setPin } from '../../../actions/index';
+import { addNote } from '../../../actions/index';
 import emptyPin from '../../../assets/svgs/pin.svg';
 import fullPin from '../../../assets/svgs/security-pin.svg';
 import ButtonIcon from '../../../components/atoms/ButtonIcon/ButtonIcon';

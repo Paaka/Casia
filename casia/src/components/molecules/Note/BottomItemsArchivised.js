@@ -1,12 +1,12 @@
 import React from 'react';
-import { deleteNote, archiveNote } from '../../../actions';
+import { deleteNote } from '../../../actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Fade from '../../animations/FadeIn';
-import ColorPallete from '../ColorPallete/ColorPallete';
+
+import RefreshIcon from '../../../assets/svgs/refresh.svg';
 import TrashIcon from '../../../assets/svgs/trash.svg';
 import BtnIcon from '../../atoms/ButtonIcon/ButtonIcon';
-import ArchiveIcon from '../../../assets/svgs/save.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,20 +26,16 @@ const StyledButtonIcon = styled(BtnIcon)`
   }
 `;
 
-const BottomItems = props => (
+const BottomItemsArchivised = props => (
   <Fade>
     <Wrapper>
       <StyledButtonIcon
         icon={TrashIcon}
         onClick={e => props.dispatch(deleteNote(props.id))}
       />
-      <ColorPallete></ColorPallete>
-      <StyledButtonIcon
-        icon={ArchiveIcon}
-        onClick={e => props.dispatch(archiveNote(props.id))}
-      ></StyledButtonIcon>
+      <StyledButtonIcon icon={RefreshIcon} />
     </Wrapper>
   </Fade>
 );
 
-export default connect(null, null)(BottomItems);
+export default connect(null, null)(BottomItemsArchivised);

@@ -10,7 +10,8 @@ const initalState = {
       context: 'Hello world',
       color: 'lightBlue'
     }
-  ]
+  ],
+  archivedNotes: []
 };
 
 const rootReducer = (state = initalState, action) => {
@@ -79,6 +80,17 @@ const rootReducer = (state = initalState, action) => {
             return val;
           }
         })
+      };
+    }
+    case 'ARCHIVE_NOTE': {
+      const [ArchvisedNote] = state.notes.filter(
+        note => note.id === action.payload.noteID
+      );
+      console.log(ArchvisedNote);
+      return {
+        ...state,
+        notes: state.notes.filter(note => note.id !== action.payload.noteID),
+        archivedNotes: [...state.archivedNotes, ArchvisedNote]
       };
     }
     default: {

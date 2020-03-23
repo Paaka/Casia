@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+
 import MainTemplate from '../../components/templates/MainTemplate/MainTemplate';
 import CreatingMenu from '../../components/molecules/CreatingMenu/CreatingMenu';
-
-const Wrapper = styled.div`
-  position: relative;
-`;
 
 const RootView = () => {
   return (

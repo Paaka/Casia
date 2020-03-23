@@ -5,7 +5,6 @@ import { updateNoteAction } from '../../actions';
 import styled from 'styled-components';
 import Routes from '../../routes/routes';
 
-import FadeIn from '../../components/animations/FadeIn';
 import ButtonIcon from '../../components/atoms/ButtonIcon/ButtonIcon';
 import addSVG from '../../assets/svgs/plus.svg';
 import MainTemplate from '../../components/templates/MainTemplate/MainTemplate';
@@ -34,6 +33,7 @@ const NotesView = props => {
       title={val.title}
       context={val.context}
       color={val.color}
+      standard
     />
   );
 
@@ -42,7 +42,10 @@ const NotesView = props => {
       {props.notes.length === 0 ? (
         <Fade>
           <h1>
-            You don't have any notes <span role="img">💔</span>
+            You don't have any notes{' '}
+            <span role="img" aria-label="brokenHeart">
+              💔
+            </span>
           </h1>
         </Fade>
       ) : (

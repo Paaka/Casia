@@ -1,5 +1,12 @@
 # Change log
 
+## V.0.1.7 Monday, 23 March 2020
+
+**Added**
+
+- fuctionality of archvisng notes.
+- save.svg,refresh.svg,
+
 ## V.0.1.6 Sunday, 22 March 2020
 
 **Added**

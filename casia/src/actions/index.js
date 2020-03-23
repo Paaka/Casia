@@ -57,3 +57,12 @@ export const updateNoteAction = note => {
     }
   };
 };
+
+export const archiveNote = ID => {
+  return {
+    type: 'ARCHIVE_NOTE',
+    payload: {
+      noteID: ID
+    }
+  };
+};

@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { deleteNote, noteContentHandler } from '../../../actions/index';
+import { noteContentHandler } from '../../../actions/index';
 import styled from 'styled-components';
 
 import Colors from '../../../constants/index';
+import BottomItems from './BottomItems';
+
 import unpinnedIcon from '../../../assets/svgs/pin.svg';
 import pinnedIcon from '../../../assets/svgs/security-pin.svg';
 import BtnIcon from '../../atoms/ButtonIcon/ButtonIcon';
-import TrashIcon from '../../../assets/svgs/trash.svg';
-import ColorPallete from '../ColorPallete/ColorPallete';
-import Fade from '../../animations/FadeIn';
-import BottomItems from './BottomItems';
+import BottomItemsArchivised from './BottomItemsArchivised';
 
 const ButtonWrapper = styled.div`
   width: 100%;
@@ -108,7 +107,11 @@ const Note = props => {
       />
 
       <ButtonWrapper>
-        {hover ? <BottomItems id={props.id}></BottomItems> : null}
+        {props.archived ? (
+          <BottomItemsArchivised id={props.id} />
+        ) : (
+          <div>{hover ? <BottomItems id={props.id}></BottomItems> : null}</div>
+        )}
       </ButtonWrapper>
     </Wrapper>
   );
