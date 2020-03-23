@@ -4,7 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width: 100%-2px;
-  height: 3rem;
+  height: 2.75rem;
   display: flex;
   align-items: center;
   border: none;

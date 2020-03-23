@@ -25,19 +25,33 @@ export const addNote = (e, state) => {
   };
 };
 
-export const deleteNote = id => {
-  return {
-    type: 'DELETE_NOTE',
-    payload: {
-      itemId: id
-    }
-  };
+export const deleteNote = (id, from) => {
+  if (from === 'ARCHIVES') {
+    return {
+      type: 'DELETE_ARCHIVED_NOTE',
+      payload: {
+        itemId: id
+      }
+    };
+  } else {
+    return {
+      type: 'DELETE_NOTE',
+      payload: {
+        itemId: id
+      }
+    };
+  }
 };
 
 export const noteContentHandler = (value, id, str) => {
   if (str === 'TITLE') {
     return {
       type: 'UPDATE_TITLE_OF_NOTE',
+      payload: { itemId: id, newValue: value }
+    };
+  } else if (str === 'COLOR') {
+    return {
+      type: 'UPDATE_COLOR_OF_NOTE',
       payload: { itemId: id, newValue: value }
     };
   } else {
@@ -61,6 +75,15 @@ export const updateNoteAction = note => {
 export const archiveNote = ID => {
   return {
     type: 'ARCHIVE_NOTE',
+    payload: {
+      noteID: ID
+    }
+  };
+};
+
+export const unarchiveNote = ID => {
+  return {
+    type: 'UNARCHIVE_NOTE',
     payload: {
       noteID: ID
     }

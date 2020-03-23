@@ -8,6 +8,7 @@ import ArchivesImage from '../../../../assets/svgs/folders.svg';
 import NotesLinkIcon from '../../../../assets/svgs/paper.svg';
 import ToDoLinkIcon from '../../../../assets/svgs/checklist.svg';
 import ImagesLinkIcon from '../../../../assets/svgs/photo.svg';
+import AddIcon from '../../../../assets/svgs/pluswhbl.svg';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -35,7 +36,9 @@ const HorizontalLine = styled.div`
 const VerticalSidebar = props => (
   <Wrapper isVisible={props.isVisible}>
     <UserInfo userImg={UserImage} />
-
+    <SidebarItem linkTo="/CreateItem" itemImg={AddIcon}>
+      Add items
+    </SidebarItem>
     <SidebarItem linkTo="/notes" itemImg={NotesLinkIcon}>
       Notes
     </SidebarItem>

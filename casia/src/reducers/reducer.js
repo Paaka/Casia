@@ -93,6 +93,41 @@ const rootReducer = (state = initalState, action) => {
         archivedNotes: [...state.archivedNotes, ArchvisedNote]
       };
     }
+    case 'DELETE_ARCHIVED_NOTE': {
+      return {
+        ...state,
+        archivedNotes: state.archivedNotes.filter(
+          note => note.id !== action.payload.itemId
+        )
+      };
+    }
+    case 'UNARCHIVE_NOTE': {
+      const [unarchivedNote] = state.archivedNotes.filter(
+        note => note.id === action.payload.noteID
+      );
+      return {
+        ...state,
+        archivedNotes: state.archivedNotes.filter(
+          note => note.id !== action.payload.noteID
+        ),
+        notes: [...state.notes, unarchivedNote]
+      };
+    }
+    case 'UPDATE_COLOR_OF_NOTE': {
+      return {
+        ...state,
+        notes: state.notes.map(note => {
+          if (note.id === action.payload.itemId) {
+            return {
+              ...note,
+              color: action.payload.newValue
+            };
+          } else {
+            return note;
+          }
+        })
+      };
+    }
     default: {
       return state;
     }

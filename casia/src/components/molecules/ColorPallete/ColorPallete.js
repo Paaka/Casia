@@ -38,14 +38,14 @@ const DropdownContentItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: ${props => (props.bgColor === 'white' ? '1px solid black' : 'none')};
+  border: ${props => (props.bgColor === 'white' ? '1px solid #ccc' : 'none')};
   cursor: pointer;
 `;
 
 const ColorPallete = props => {
   const [mydata, setData] = useState({
     colors: [
-      { id: 'white', color: 'white', isChecked: true },
+      { id: 'white', color: 'white', isChecked: false },
       { id: 'red', color: Colors.noteColors.red, isChecked: false },
       { id: 'orange', color: Colors.noteColors.orange, isChecked: false },
       { id: 'yellow', color: Colors.noteColors.yellow, isChecked: false },

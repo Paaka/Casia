@@ -1,5 +1,5 @@
 import React from 'react';
-import { deleteNote, archiveNote } from '../../../actions';
+import { deleteNote, archiveNote, noteContentHandler } from '../../../actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Fade from '../../animations/FadeIn';
@@ -33,7 +33,9 @@ const BottomItems = props => (
         icon={TrashIcon}
         onClick={e => props.dispatch(deleteNote(props.id))}
       />
-      <ColorPallete></ColorPallete>
+      <ColorPallete
+        idk={str => props.dispatch(noteContentHandler(str, props.id, 'COLOR'))}
+      ></ColorPallete>
       <StyledButtonIcon
         icon={ArchiveIcon}
         onClick={e => props.dispatch(archiveNote(props.id))}

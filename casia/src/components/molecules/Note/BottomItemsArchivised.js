@@ -1,5 +1,5 @@
 import React from 'react';
-import { deleteNote } from '../../../actions';
+import { deleteNote, unarchiveNote } from '../../../actions';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Fade from '../../animations/FadeIn';
@@ -31,9 +31,12 @@ const BottomItemsArchivised = props => (
     <Wrapper>
       <StyledButtonIcon
         icon={TrashIcon}
-        onClick={e => props.dispatch(deleteNote(props.id))}
+        onClick={e => props.dispatch(deleteNote(props.id, 'ARCHIVES'))}
       />
-      <StyledButtonIcon icon={RefreshIcon} />
+      <StyledButtonIcon
+        icon={RefreshIcon}
+        onClick={e => props.dispatch(unarchiveNote(props.id))}
+      />
     </Wrapper>
   </Fade>
 );
