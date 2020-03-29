@@ -6,7 +6,7 @@ class ImageView extends React.Component {
   render() {
     return (
       <MainTemplate>
-        <h1> Hello There Todo</h1>
+        <h1>Hello to do view</h1>
       </MainTemplate>
     );
   }

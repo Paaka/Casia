@@ -11,7 +11,14 @@ const initalState = {
       color: 'lightBlue'
     }
   ],
-  archivedNotes: []
+  archivedNotes: [],
+  task: [
+    {
+      id: 0,
+      image: null,
+      context: 'Camping'
+    }
+  ]
 };
 
 const rootReducer = (state = initalState, action) => {
@@ -126,6 +133,11 @@ const rootReducer = (state = initalState, action) => {
             return note;
           }
         })
+      };
+    }
+    case 'ADD_TASK': {
+      return {
+        ...state
       };
     }
     default: {

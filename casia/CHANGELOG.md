@@ -4,6 +4,8 @@
 
 **Added**
 
+- GoBack component
+- finished note sections.
 - fuctionality of archvisng notes.
 - save.svg,refresh.svg,
 
