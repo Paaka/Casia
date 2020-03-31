@@ -7,18 +7,12 @@ export const changeSelectedItem = string => {
   };
 };
 
-export const addNote = (e, state) => {
-  e.preventDefault();
-  console.log(state);
-  const title = document.getElementById('noteTitle').value;
-  const context = document.getElementById('noteContext').value;
-  document.getElementById('noteTitle').value = '';
-  document.getElementById('noteContext').value = '';
+export const addNote = state => {
   return {
     type: 'ADD_NOTE',
     payload: {
-      title: title,
-      context: context,
+      title: state.noteTitle,
+      context: state.noteContent,
       isPinned: state.isPinned,
       color: state.color
     }

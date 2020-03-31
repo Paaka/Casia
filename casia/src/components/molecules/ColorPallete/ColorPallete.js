@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import ButtonIcon from '../../atoms/ButtonIcon/ButtonIcon';
-import colorIcon from '../../../assets/svgs/color-scheme.svg';
+import colorIcon from '../../../assets/svgs/paint.svg';
 import Colors from '../../../constants/index';
 
 const DropdownContent = styled.div`

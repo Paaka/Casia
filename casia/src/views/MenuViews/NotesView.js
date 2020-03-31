@@ -22,7 +22,7 @@ const StyledGridWrapper = styled.div`
 `;
 
 const NotesView = props => {
-  const [isFormOpen, setIsFormOpen] = useState(true);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const updatePinHandler = note => {
     props.dispatch(updateNoteAction(note));

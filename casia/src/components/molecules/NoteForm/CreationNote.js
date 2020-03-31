@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { connect } from 'react-redux';
 import ColorPallete from '../ColorPallete/ColorPallete';
+import { addNote } from '../../../actions';
 
 const Wrapper = styled.div`
   display: flex;
@@ -59,7 +60,7 @@ const StyledInput = styled.input`
 
 const StyledTextarea = styled.textarea`
   background-color: #eee;
-  width: 50%;
+  width: 45%;
   border: none;
   border-radius: 30px;
   outline: none;
@@ -68,6 +69,21 @@ const StyledTextarea = styled.textarea`
 `;
 
 const CreationNote = props => {
+  const [isPinned, setIsPinned] = useState(false);
+  const [color, setColor] = useState('white');
+
+  const addNoteHandler = () => {
+    const noteTitle = document.getElementById('noteFormTitle').value;
+    const noteContent = document.getElementById('noteFormContent').value;
+    document.getElementById('noteFormTitle').value = '';
+    document.getElementById('noteFormContent').value = '';
+    return {
+      noteTitle,
+      noteContent,
+      isPinned,
+      color
+    };
+  };
   return (
     <Wrapper isOpen={props.isOpen}>
       <StyledHeading> Add Note :</StyledHeading>
@@ -75,15 +91,18 @@ const CreationNote = props => {
       <StyledInput id="noteFormTitle" type="text" placeholder="NOTE TITLE" />
 
       <StyledTextarea
+        id="noteFormContent"
         rows="12"
         placeholder="Enter content of note here..."
       ></StyledTextarea>
       <div>
         <ColorPallete></ColorPallete>
       </div>
-      <StyledButton>ADD NOTE</StyledButton>
+      <StyledButton onClick={() => props.dispatch(addNote(addNoteHandler()))}>
+        ADD NOTE
+      </StyledButton>
     </Wrapper>
   );
 };
 
-export default CreationNote;
+export default connect(null, null)(CreationNote);

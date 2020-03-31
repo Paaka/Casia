@@ -6,6 +6,7 @@
 
 - To do view to display tasksList
 - To do form design
+- Add note action
 
 **Added**
 
