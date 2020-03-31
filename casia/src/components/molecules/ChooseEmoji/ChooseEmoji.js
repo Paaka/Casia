@@ -32,9 +32,9 @@ const Modal = styled.div`
 `;
 
 const StyledButtonIcon = styled(ButtonIcon)`
-  width: 25px;
-  height: 25px;
-  background-size: 20px;
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
+  background-size: ${({ bgSize }) => bgSize};
 `;
 
 const ChooseEmoji = props => {
@@ -59,7 +59,10 @@ const ChooseEmoji = props => {
 
   return (
     <Wrapper>
-      <ButtonIcon
+      <StyledButtonIcon
+        width="30px"
+        height="30px"
+        bgSize="25px"
         icon={defaultImage}
         onClick={() => {
           setIsOpen(!isOpen);
@@ -68,6 +71,9 @@ const ChooseEmoji = props => {
       <Modal shouldBeOpen={isOpen}>
         {allIcons.map(val => (
           <StyledButtonIcon
+            width="25px"
+            height="25px"
+            bgSize="20px"
             key={val.id}
             icon={val.icon}
             onClick={() => imageSetHandler(val.icon)}

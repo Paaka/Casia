@@ -12,7 +12,8 @@ const initalState = {
     }
   ],
   archivedNotes: [],
-  task: [
+  tasks: [],
+  toDoLists: [
     {
       id: 0,
       listImage: null,
@@ -135,13 +136,13 @@ const rootReducer = (state = initalState, action) => {
         })
       };
     }
-    case 'ADD_TASK': {
+    case 'ADD_TO_DO_LIST': {
       return {
         ...state,
-        task: [
-          ...state.task,
+        toDoLists: [
+          ...state.toDoLists,
           {
-            id: `${state.task.length}-${Math.floor(Math.random() * 1000)}`,
+            id: `${state.toDoLists.length}-${Math.floor(Math.random() * 1000)}`,
             ...action.payload
           }
         ]

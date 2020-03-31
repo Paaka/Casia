@@ -90,9 +90,9 @@ export const unarchiveNote = ID => {
   };
 };
 
-export const AddTask = task => {
+export const AddToDoList = task => {
   return {
-    type: 'ADD_TASK',
+    type: 'ADD_TO_DO_LIST',
     payload: {
       listContent: task.value,
       listIcon: task.image

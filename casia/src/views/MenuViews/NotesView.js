@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateNoteAction } from '../../actions';
@@ -10,6 +10,7 @@ import addSVG from '../../assets/svgs/plus.svg';
 import MainTemplate from '../../components/templates/MainTemplate/MainTemplate';
 import Note from '../../components/molecules/Note/note';
 import Fade from '../../components/animations/FadeIn';
+import CreationNote from '../../components/molecules/NoteForm/CreationNote';
 
 const StyledGridWrapper = styled.div`
   display: grid;
@@ -17,9 +18,12 @@ const StyledGridWrapper = styled.div`
   grid-gap: 10px;
   width: 95%;
   min-height: 60vh;
+  position: relative;
 `;
 
 const NotesView = props => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   const updatePinHandler = note => {
     props.dispatch(updateNoteAction(note));
   };
@@ -62,9 +66,12 @@ const NotesView = props => {
             })}
         </StyledGridWrapper>
       )}
-      <Link to={Routes.newItemPage}>
-        <ButtonIcon icon={addSVG}></ButtonIcon>
-      </Link>
+      <CreationNote isOpen={isFormOpen} />
+
+      <ButtonIcon
+        icon={addSVG}
+        onClick={() => setIsFormOpen(!isFormOpen)}
+      ></ButtonIcon>
     </MainTemplate>
   );
 };

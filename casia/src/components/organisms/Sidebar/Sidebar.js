@@ -45,7 +45,7 @@ const Sidebar = props => (
       </NavLink>
       <NavLink to={Routes.toDoPage}>
         <SidebarItem
-          numOfItems={props.task.length}
+          numOfItems={props.toDoLists.length}
           icon={ToDoLinkIcon}
         ></SidebarItem>
       </NavLink>
@@ -56,6 +56,6 @@ const Sidebar = props => (
   </Wrapper>
 );
 
-const mapStateToProps = ({ notes, task }) => ({ notes, task });
+const mapStateToProps = ({ notes, toDoLists }) => ({ notes, toDoLists });
 
 export default connect(mapStateToProps, null)(Sidebar);

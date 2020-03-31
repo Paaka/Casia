@@ -12,6 +12,15 @@ const Wrapper = styled.div`
   border-radius: 4px;
   background-color: white;
   margin: 3px 0px;
+  transition: 0.2s background-color;
+
+  :hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  :active {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const StyledH3 = styled.h3`

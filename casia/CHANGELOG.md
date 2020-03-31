@@ -5,6 +5,7 @@
 **Changed**
 
 - To do view to display tasksList
+- To do form design
 
 **Added**
 
