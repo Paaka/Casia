@@ -1,5 +1,17 @@
 # Change log
 
+## V.0.2 Tuesday, 31 March 2020
+
+**Changed**
+
+- To do view to display tasksList
+
+**Added**
+
+- To do list item
+- Background image (oragne-fruits.jpg)
+- DefaultToDoImage.scg
+
 ## V.0.1.7 Monday, 23 March 2020
 
 **Added**

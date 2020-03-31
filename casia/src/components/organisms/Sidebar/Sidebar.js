@@ -44,7 +44,10 @@ const Sidebar = props => (
         ></SidebarItem>
       </NavLink>
       <NavLink to={Routes.toDoPage}>
-        <ButtonIcon icon={ToDoLinkIcon}></ButtonIcon>
+        <SidebarItem
+          numOfItems={props.task.length}
+          icon={ToDoLinkIcon}
+        ></SidebarItem>
       </NavLink>
       <NavLink to={Routes.imagePage}>
         <ButtonIcon icon={ImagesLinkIcon}></ButtonIcon>
@@ -53,6 +56,6 @@ const Sidebar = props => (
   </Wrapper>
 );
 
-const mapStateToProps = ({ notes }) => ({ notes });
+const mapStateToProps = ({ notes, task }) => ({ notes, task });
 
 export default connect(mapStateToProps, null)(Sidebar);

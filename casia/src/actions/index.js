@@ -94,7 +94,7 @@ export const AddTask = task => {
   return {
     type: 'ADD_TASK',
     payload: {
-      listValue: task.value,
+      listContent: task.value,
       listIcon: task.image
     }
   };

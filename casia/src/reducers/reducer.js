@@ -15,8 +15,8 @@ const initalState = {
   task: [
     {
       id: 0,
-      image: null,
-      context: 'Camping'
+      listImage: null,
+      listContent: 'Camping'
     }
   ]
 };
@@ -137,7 +137,14 @@ const rootReducer = (state = initalState, action) => {
     }
     case 'ADD_TASK': {
       return {
-        ...state
+        ...state,
+        task: [
+          ...state.task,
+          {
+            id: `${state.task.length}-${Math.floor(Math.random() * 1000)}`,
+            ...action.payload
+          }
+        ]
       };
     }
     default: {
