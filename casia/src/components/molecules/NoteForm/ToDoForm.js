@@ -12,11 +12,11 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: rgb(200, 220, 237);
-  width: 50vw;
+  width: 40%;
   border-radius: 5px;
   position: fixed;
   bottom: 10px;
-  left: 25%;
+  left: 30%;
 `;
 
 const StyledInput = styled.input`
@@ -26,7 +26,7 @@ const StyledInput = styled.input`
   font-size: 20px;
   padding: 0px;
   margin: 0 10px;
-  width: 70%;
+  width: 100%;
   background-color: rgb(200, 220, 237);
   &:focus {
     border-bottom-color: royalblue;

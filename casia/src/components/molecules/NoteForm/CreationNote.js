@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import ColorPallete from '../ColorPallete/ColorPallete';
 import { addNote } from '../../../actions';
+
+import ColorPallete from '../ColorPallete/ColorPallete';
+import ButtonIcon from '../../atoms/ButtonIcon/ButtonIcon';
+import unpinnedIcon from '../../../assets/svgs/pin.svg';
+import pinnedIcon from '../../../assets/svgs/security-pin.svg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,7 +28,7 @@ const Wrapper = styled.div`
 const StyledHeading = styled.h2`
   font-size: 32px;
   color: rgb(49, 99, 171);
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `;
 
 const StyledButton = styled.button`
@@ -68,6 +72,17 @@ const StyledTextarea = styled.textarea`
   padding: 30px;
 `;
 
+const StyledButtonIcon = styled(ButtonIcon)`
+  width: 30px;
+  height: 30px;
+  background-size: 25px;
+`;
+
+const AdditionalItemsWrapper = styled.div`
+  display: flex;
+  margin: 5px 0;
+`;
+
 const CreationNote = props => {
   const [isPinned, setIsPinned] = useState(false);
   const [color, setColor] = useState('white');
@@ -84,6 +99,15 @@ const CreationNote = props => {
       color
     };
   };
+
+  const updatePinHandler = () => {
+    setIsPinned(!isPinned);
+  };
+
+  const updateColorHandler = str => {
+    setColor(str);
+  };
+
   return (
     <Wrapper isOpen={props.isOpen}>
       <StyledHeading> Add Note :</StyledHeading>
@@ -95,9 +119,13 @@ const CreationNote = props => {
         rows="12"
         placeholder="Enter content of note here..."
       ></StyledTextarea>
-      <div>
-        <ColorPallete></ColorPallete>
-      </div>
+      <AdditionalItemsWrapper>
+        <ColorPallete idk={updateColorHandler}></ColorPallete>
+        <StyledButtonIcon
+          icon={isPinned ? pinnedIcon : unpinnedIcon}
+          onClick={updatePinHandler}
+        />
+      </AdditionalItemsWrapper>
       <StyledButton onClick={() => props.dispatch(addNote(addNoteHandler()))}>
         ADD NOTE
       </StyledButton>
